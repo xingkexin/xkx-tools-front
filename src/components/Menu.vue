@@ -12,6 +12,7 @@
           <span slot="title">编解码</span>
         </template>
         <el-menu-item index="1-1"><router-link to="/base64">Base64</router-link></el-menu-item>
+        <el-menu-item index="1-1"><router-link to="/url">URL</router-link></el-menu-item>
       </el-submenu>
       <el-submenu index="2">
         <template slot="title">
