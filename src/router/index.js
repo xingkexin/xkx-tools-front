@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
+import Website from '@/components/Website'
 import Base64 from '@/components/Base64'
 import URL from '@/components/URL'
 import MD5 from '@/components/MD5'
@@ -11,8 +12,8 @@ Vue.use(Router)
 export default new Router({
   routes: [{
     path: '/',
-    name: 'HelloWorld',
-    component: HelloWorld
+    name: 'Website',
+    component: Website
   }, {
     path: '/base64',
     name: 'Base64',

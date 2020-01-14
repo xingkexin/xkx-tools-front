@@ -10,6 +10,7 @@
           <router-view/>
         </el-main>
       </el-container>
+      <el-footer>冀ICP备20000748号</el-footer>
     </el-container>
   </div>
 </template>
