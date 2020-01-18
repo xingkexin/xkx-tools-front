@@ -36,6 +36,8 @@
 </template>
 
 <script>
+  import Qs from 'qs'
+
   export default {
     name: 'URL',
     data() {
@@ -52,7 +54,15 @@
         this.urlDecodedText = decodeURIComponent(this.urlEncodedText)
       },
       encode() {
-        this.urlEncodedText = encodeURI(this.urlDecodedText)
+        let data = {
+          str: this.urlDecodedText,
+          charsetStr: 'UTF-8'
+        }
+        this.axios.post('/url/encode', Qs.stringify(data)).then((res) => {
+          console.log(res)
+          this.urlEncodedText = res.data
+        })
+        // this.urlEncodedText = encodeURI(this.urlDecodedText)
       },
       decode() {
         this.urlDecodedText = decodeURI(this.urlEncodedText)

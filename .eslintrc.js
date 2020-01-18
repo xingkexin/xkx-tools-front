@@ -25,6 +25,8 @@ module.exports = {
     'generator-star-spacing': 'off',
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    // vue将标签渲染为原生html标签时，由于这些标签是自闭合的，所以有end标签会报错。以下为取消该错误的检查。
+    "vue/no-parsing-error": [2, { "x-invalid-end-tag": false }],
     // 关闭方法名和刮号之间需要有一个空格的检查
     "space-before-function-paren": 0,
     // 关闭代码缩进检查

@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import Website from '@/components/Website'
 import Base64 from '@/components/Base64'
 import URL from '@/components/URL'
