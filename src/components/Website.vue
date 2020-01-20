@@ -62,6 +62,7 @@
         <el-tag><el-link :underline="false" target="_blank" href="http://jquery.cuishifeng.cn/">JQuery</el-link></el-tag>
         <el-tag><el-link :underline="false" target="_blank" href="https://v3.bootcss.com/getting-started/">Bootstrap3</el-link></el-tag>
         <el-tag><el-link :underline="false" target="_blank" href="https://www.cnblogs.com/tim-li/archive/2012/08/06/2580252.html">canvas</el-link></el-tag>
+        <el-tag><el-link :underline="false" target="_blank" href="http://nodejs.cn/api/">NodeJs</el-link></el-tag>
         <el-tag><el-link :underline="false" target="_blank" href="https://cn.vuejs.org/v2/guide/">Vue</el-link></el-tag>
         <el-tag><el-link :underline="false" target="_blank" href="https://router.vuejs.org/zh/">Vue Router</el-link></el-tag>
         <el-tag><el-link :underline="false" target="_blank" href="https://element.eleme.cn/#/zh-CN/component/installation">ElementUI</el-link></el-tag>
