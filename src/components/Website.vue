@@ -5,6 +5,7 @@
       <el-col :sm="4" :xs="24"><h3>CDN</h3></el-col>
       <el-col :sm="20" :xs="24">
         <el-tag><el-link :underline="false" target="_blank" href="https://www.jsdelivr.com/">jsdelivr</el-link></el-tag>
+        <el-tag><el-link :underline="false" target="_blank" href="https://www.bootcdn.cn/">BootCDN</el-link></el-tag>
       </h3></el-col>
     </el-row>
     <el-divider></el-divider>
@@ -67,6 +68,19 @@
         <el-tag><el-link :underline="false" target="_blank" href="https://router.vuejs.org/zh/">Vue Router</el-link></el-tag>
         <el-tag><el-link :underline="false" target="_blank" href="https://element.eleme.cn/#/zh-CN/component/installation">ElementUI</el-link></el-tag>
         <el-tag><el-link :underline="false" target="_blank" href="http://www.axios-js.com/zh-cn/docs/">Axios</el-link></el-tag>
+        <el-tag><el-link :underline="false" target="_blank" href="http://mockjs.com/">Mockjs</el-link></el-tag>
+        <el-tag><el-link :underline="false" target="_blank" href="https://www.webpackjs.com/concepts/">webpack</el-link></el-tag>
+      </h3></el-col>
+    </el-row>
+    <el-divider></el-divider>
+    <el-row>
+      <el-col :sm="4" :xs="24"><h3>VUE</h3></el-col>
+      <el-col :sm="20" :xs="24">
+        <el-tag><el-link :underline="false" target="_blank" href="https://cn.vuejs.org/v2/guide/">Vue</el-link></el-tag>
+        <el-tag><el-link :underline="false" target="_blank" href="https://router.vuejs.org/zh/">Vue Router</el-link></el-tag>
+        <el-tag><el-link :underline="false" target="_blank" href="https://vuex.vuejs.org/zh/">Vuex</el-link></el-tag>
+        <el-tag><el-link :underline="false" target="_blank" href="https://cli.vuejs.org/zh/">Vue CLI</el-link></el-tag>
+        <el-tag><el-link :underline="false" target="_blank" href="https://vue-loader.vuejs.org/zh/">Vue Loader</el-link></el-tag>
       </h3></el-col>
     </el-row>
     <el-divider></el-divider>
