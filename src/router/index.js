@@ -6,12 +6,12 @@ import Router from 'vue-router'
 // import MD5 from '@/components/MD5'
 // const SHA = () => require('@/components/SHA')
 
-const Website = r => require.ensure([], () => r(require('@/components/Website')), 'Website')
+const Website = r => require.ensure([], () => r(require('@/views/website')), 'Website')
 const Tools = r => require.ensure([], () => r(require('@/views/tools')), 'Tools')
-const Base64 = r => require.ensure([], () => r(require('@/components/Base64')), 'Base64')
-const URL = r => require.ensure([], () => r(require('@/components/URL')), 'URL')
-const MD5 = r => require.ensure([], () => r(require('@/components/MD5')), 'MD5')
-const SHA = r => require.ensure([], () => r(require('@/components/SHA')), 'SHA')
+const Base64 = r => require.ensure([], () => r(require('@/views/tools/Base64')), 'Base64')
+const URL = r => require.ensure([], () => r(require('@/views/tools/URL')), 'URL')
+const MD5 = r => require.ensure([], () => r(require('@/views/tools/MD5')), 'MD5')
+const SHA = r => require.ensure([], () => r(require('@/views/tools/SHA')), 'SHA')
 
 Vue.use(Router)
 
