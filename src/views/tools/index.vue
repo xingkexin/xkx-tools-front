@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <el-container>
     <el-aside width="200px" class="hidden-xs-only">
       <Menu/>
     </el-aside>
     <el-main>
       <router-view/>
     </el-main>
-  </div>
+  </el-container>
 </template>
 
 <script>

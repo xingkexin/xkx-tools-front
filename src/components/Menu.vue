@@ -11,16 +11,16 @@
           <i class="el-icon-location"></i>
           <span slot="title">编解码</span>
         </template>
-        <router-link to="/base64"><el-menu-item index="1-1">Base64</el-menu-item></router-link>
-        <router-link to="/url"><el-menu-item index="1-2">URL</el-menu-item></router-link>
+        <router-link to="./base64"><el-menu-item index="1-1">Base64</el-menu-item></router-link>
+        <router-link to="./url"><el-menu-item index="1-2">URL</el-menu-item></router-link>
       </el-submenu>
       <el-submenu index="2">
         <template slot="title">
           <i class="el-icon-location"></i>
           <span slot="title">摘要</span>
         </template>
-        <router-link to="/md5"><el-menu-item index="2-1">MD5</el-menu-item></router-link>
-        <router-link to="/sha"><el-menu-item index="2-2">SHA</el-menu-item></router-link>
+        <router-link to="./md5"><el-menu-item index="2-1">MD5</el-menu-item></router-link>
+        <router-link to="./sha"><el-menu-item index="2-2">SHA</el-menu-item></router-link>
       </el-submenu>
     </el-menu>
   </div>

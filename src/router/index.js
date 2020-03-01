@@ -19,6 +19,9 @@ export default new Router({
     path: '/tools',
     component: Tools,
     children: [{
+      path: '',
+      redirect: 'base64'
+    }, {
       path: 'base64',
       component: Base64
     }, {
