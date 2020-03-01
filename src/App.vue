@@ -40,7 +40,9 @@
       <el-main>
         <router-view />
       </el-main>
-      <el-footer>冀ICP备20000748号</el-footer>
+      <el-footer>
+        <el-link href="http://www.beian.miit.gov.cn/" target="_blank" :underline="false">冀ICP备20000748号</el-link>
+      </el-footer>
     </el-container>
   </div>
 </template>
@@ -66,10 +68,4 @@
   .el-footer {
     text-align: center;
   }
-
-  /* @media only screen and (max-width: 768px) {
-    .el-aside {
-      display: none;
-    }
-} */
 </style>
