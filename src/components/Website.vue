@@ -65,8 +65,6 @@
         <el-tag><el-link :underline="false" target="_blank" href="https://www.cnblogs.com/tim-li/archive/2012/08/06/2580252.html">canvas</el-link></el-tag>
         <el-tag><el-link :underline="false" target="_blank" href="http://nodejs.cn/api/">NodeJs</el-link></el-tag>
         <el-tag><el-link :underline="false" target="_blank" href="https://cn.vuejs.org/v2/guide/">Vue</el-link></el-tag>
-        <el-tag><el-link :underline="false" target="_blank" href="https://router.vuejs.org/zh/">Vue Router</el-link></el-tag>
-        <el-tag><el-link :underline="false" target="_blank" href="https://element.eleme.cn/#/zh-CN/component/installation">ElementUI</el-link></el-tag>
         <el-tag><el-link :underline="false" target="_blank" href="http://www.axios-js.com/zh-cn/docs/">Axios</el-link></el-tag>
         <el-tag><el-link :underline="false" target="_blank" href="http://mockjs.com/">Mockjs</el-link></el-tag>
         <el-tag><el-link :underline="false" target="_blank" href="https://www.webpackjs.com/concepts/">webpack</el-link></el-tag>
@@ -81,6 +79,9 @@
         <el-tag><el-link :underline="false" target="_blank" href="https://vuex.vuejs.org/zh/">Vuex</el-link></el-tag>
         <el-tag><el-link :underline="false" target="_blank" href="https://cli.vuejs.org/zh/">Vue CLI</el-link></el-tag>
         <el-tag><el-link :underline="false" target="_blank" href="https://vue-loader.vuejs.org/zh/">Vue Loader</el-link></el-tag>
+        <el-tag><el-link :underline="false" target="_blank" href="https://element.eleme.cn/#/zh-CN/component/installation">饿了么ElementUI</el-link></el-tag>
+        <el-tag><el-link :underline="false" target="_blank" href="http://mint-ui.github.io/#!/zh-cn">饿了么Mint UI</el-link></el-tag>
+        <el-tag><el-link :underline="false" target="_blank" href="https://nutui.jd.com/">京东Nut UI</el-link></el-tag>
       </h3></el-col>
     </el-row>
     <el-divider></el-divider>

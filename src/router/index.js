@@ -4,30 +4,32 @@ import Website from '@/components/Website'
 import Base64 from '@/components/Base64'
 import URL from '@/components/URL'
 import MD5 from '@/components/MD5'
-import SHA from '@/components/SHA'
+// const SHA = () => require('@/components/SHA')
+
+const SHA = r => require.ensure([], () => r(require('@/components/SHA')), 'SHA')
+const Tools = r => require.ensure([], () => r(require('@/views/tools')), 'Tools')
 
 Vue.use(Router)
 
 export default new Router({
   routes: [{
     path: '/',
-    name: 'Website',
     component: Website
   }, {
-    path: '/base64',
-    name: 'Base64',
-    component: Base64
-  }, {
-    path: '/url',
-    name: 'URL',
-    component: URL
-  }, {
-    path: '/md5',
-    name: 'MD5',
-    component: MD5
-  }, {
-    path: '/sha',
-    name: 'SHA',
-    component: SHA
-  }]
+    path: '/tools',
+    component: Tools,
+    children: [{
+      path: 'base64',
+      component: Base64
+    }, {
+      path: 'url',
+      component: URL
+    }, {
+      path: 'md5',
+      component: MD5
+    }, {
+      path: 'sha',
+      component: SHA
+    }]
+  }, ]
 })
