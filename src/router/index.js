@@ -1,13 +1,17 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Website from '@/components/Website'
-import Base64 from '@/components/Base64'
-import URL from '@/components/URL'
-import MD5 from '@/components/MD5'
+// import Website from '@/components/Website'
+// import Base64 from '@/components/Base64'
+// import URL from '@/components/URL'
+// import MD5 from '@/components/MD5'
 // const SHA = () => require('@/components/SHA')
 
-const SHA = r => require.ensure([], () => r(require('@/components/SHA')), 'SHA')
+const Website = r => require.ensure([], () => r(require('@/components/Website')), 'Website')
 const Tools = r => require.ensure([], () => r(require('@/views/tools')), 'Tools')
+const Base64 = r => require.ensure([], () => r(require('@/components/Base64')), 'Base64')
+const URL = r => require.ensure([], () => r(require('@/components/URL')), 'URL')
+const MD5 = r => require.ensure([], () => r(require('@/components/MD5')), 'MD5')
+const SHA = r => require.ensure([], () => r(require('@/components/SHA')), 'SHA')
 
 Vue.use(Router)
 
