@@ -21,7 +21,7 @@
             </el-menu>
             <el-menu default-active="0" mode="horizontal" class="hidden-sm-and-up" style="float: right;">
               <el-submenu index="0">
-                <template slot="title">导航</template>
+                <template slot="title"><i class="fa fa-bars"></i></template>
                 <el-menu-item index="1">
                   <router-link to="/">首页</router-link>
                 </el-menu-item>
@@ -58,11 +58,12 @@
   }
 </script>
 
-<style>
+<style lang="less">
   body {
     margin: 0;
     padding: 0;
   }
+
   #app {}
 
   .el-footer {
