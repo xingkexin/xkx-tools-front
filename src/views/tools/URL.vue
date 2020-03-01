@@ -7,18 +7,26 @@
       </el-col>
       <el-col :span="4" :xs="24">
         <el-row>
-          <el-col :span="24">
-            <el-button type="primary" v-on:click="encodeBySmart">智能编码<i class="el-icon-arrow-right el-icon--right"></i></el-button>
+          <el-col :span="24" :xs="8">
+            <el-button type="primary" v-on:click="encodeBySmart" size="mini">
+              智能编码
+              <i class="el-icon-arrow-right hidden-xs-only"></i>
+              <i class="el-icon-arrow-down hidden-sm-and-up"></i>
+            </el-button>
           </el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="24">
-            <el-button type="primary" v-on:click="encodeByDirect">直接编码<i class="el-icon-arrow-right el-icon--right"></i></el-button>
+          <el-col :span="24" :xs="8">
+            <el-button type="primary" v-on:click="encodeByDirect" size="mini">
+              编码
+              <i class="el-icon-arrow-right hidden-xs-only"></i>
+              <i class="el-icon-arrow-down hidden-sm-and-up"></i>
+            </el-button>
           </el-col>
-        </el-row>
-        <el-row>
-          <el-col :span="24">
-            <el-button type="primary" v-on:click="decode" icon="el-icon-arrow-left">解码</el-button>
+          <el-col :span="24" :xs="8">
+            <el-button type="primary" v-on:click="decode" size="mini">
+              <i class="el-icon-arrow-left hidden-xs-only"></i>
+              <i class="el-icon-arrow-up hidden-sm-and-up"></i>
+              解码
+            </el-button>
           </el-col>
         </el-row>
       </el-col>
@@ -76,12 +84,8 @@
   }
 </script>
 
-<style>
-  .el-row {
-    margin-bottom: 20px;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
+<style scoped>
+  .el-button {
+    margin: 10px 10px;
   }
 </style>

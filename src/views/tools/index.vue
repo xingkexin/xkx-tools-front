@@ -19,5 +19,15 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+  .el-main {
+    margin: 0;
+    padding: 0;
+    padding-left: 10px;
+    text-align: center;
+  }
+
+  .el-breadcrumb {
+    margin-bottom: 20px;
+  }
 </style>
