@@ -19,7 +19,7 @@
                 <el-menu-item index="3-1">Element UI</el-menu-item>
               </el-submenu>
             </el-menu>
-            <el-menu default-active="0" mode="horizontal" class="hidden-sm-and-up">
+            <el-menu default-active="0" mode="horizontal" class="hidden-sm-and-up" style="float: right;">
               <el-submenu index="0">
                 <template slot="title">导航</template>
                 <el-menu-item index="1">
