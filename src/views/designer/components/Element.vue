@@ -3,6 +3,7 @@
       <xkx-element v-for="(child, index) in obj.children" :path="path + '-' + index" :obj="child" :key="index" @click="clickEvent"></xkx-element>
     </el-row>
     <el-col class="component" :class="{active: active}" :span="obj.span" v-else-if="'col' == obj.name" @click.native="clickHandler(obj.children)">
+      <xkx-element v-for="(child, index) in obj.children" :path="path + '-' + index" :obj="child" :key="index" @click="clickEvent"></xkx-element>
     </el-col>
     <div class="component" :class="{active: active}" v-else @click="clickHandler(obj.children)"></div>
 </template>
@@ -20,7 +21,7 @@
     },
     methods: {
       clickHandler(list) {
-        if(list) return false
+        if(list.length > 0) return false
         // console.log(this.path)
         this.active = !this.active
         this.$emit('click', this.path)

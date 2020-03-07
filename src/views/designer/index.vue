@@ -27,7 +27,7 @@
     <el-main>
       <el-tabs type="border-card" @tab-click="tabChange">
         <el-tab-pane label="设计">
-          <xkx-element v-for="(item, index) in rowList" :path="index" :obj="item" :key="index" @click="clickHandler"></xkx-element>
+          <xkx-element v-for="(item, index) in rowList" :path="'root-' + index" :obj="item" :key="index" @click="clickHandler"></xkx-element>
         </el-tab-pane>
         <el-tab-pane label="代码" name="code">
           <div>
@@ -49,11 +49,13 @@
       return {
         customRow: null,
         rowList: [],
-        html: null
+        html: null,
+        currEle: null
       }
     },
     methods: {
       addRow(type, value) {
+        if(!this.currEle) this.currEle = this.rowList
         const row = {
           name: 'row',
           children: []
@@ -66,7 +68,7 @@
               name: 'col',
               span: new Number(colspan),
               width: null,
-              children: null
+              children: []
             }
             row.children.push(col)
           }
@@ -78,13 +80,14 @@
               name: 'col',
               span: new Number(colspan),
               width: null,
-              children: null
+              children: []
             }
             row.children.push(col)
           }
         }
-        this.rowList.push(row)
-        console.log(this.rowList)
+        this.currEle.push(row)
+        console.log(JSON.stringify(this.currEle))
+        console.log(JSON.stringify(this.rowList))
       },
       tabChange(tab) {
         if(tab.name == 'code') this.genCode()
@@ -120,6 +123,13 @@
       },
       clickHandler(path) {
         console.log('接到path：' + path)
+        // 根据path，定位到当前选中的元素
+        this.currEle = this.rowList
+        const indexList = path.split('-')
+        for(let i=1; i<indexList.length; i++) {
+          const index = indexList[i]
+          this.currEle = this.currEle[index].children
+        }
       }
     }
   }
