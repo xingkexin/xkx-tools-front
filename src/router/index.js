@@ -8,6 +8,7 @@ import Router from 'vue-router'
 
 const Website = r => require.ensure([], () => r(require('@/views/website')), 'Website')
 const Tools = r => require.ensure([], () => r(require('@/views/tools')), 'Tools')
+const Designer = r => require.ensure([], () => r(require('@/views/designer')), 'Designer')
 const Base64 = r => require.ensure([], () => r(require('@/views/tools/Base64')), 'Base64')
 const URL = r => require.ensure([], () => r(require('@/views/tools/URL')), 'URL')
 const MD5 = r => require.ensure([], () => r(require('@/views/tools/MD5')), 'MD5')
@@ -38,5 +39,8 @@ export default new Router({
       path: 'sha',
       component: SHA
     }]
-  }, ]
+  }, {
+    path: '/designer',
+    component: Designer
+  }]
 })
