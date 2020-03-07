@@ -2,6 +2,7 @@
   <el-container>
     <el-aside width="260px">
       <div style="text-align: center; margin: 5px;">
+        <el-button type="primary" @click="reset">重置</el-button>
         <el-button type="primary" @click="genCode">生成代码</el-button>
       </div>
       <el-collapse :value="['1']">
@@ -62,6 +63,16 @@
       }
     },
     methods: {
+      reset() {
+        this.rootEle = {
+          name: 'div',
+          active: true,
+          children: []
+        }
+        this.currPath = 'root',
+        this.currEle = this.rootEle
+        this.html = null
+      },
       addRow(type, value) {
         if(!this.currEle) this.currEle = this.rootEle
         const row = {
