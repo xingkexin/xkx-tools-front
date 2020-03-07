@@ -7,7 +7,7 @@
       <el-collapse :value="['1']">
         <el-collapse-item title="ElementUI布局" name="1">
           <div>
-            <p>快速生成等宽列数：</p>
+            <p>常用等宽列数：</p>
             <el-button type="primary" size="mini" round @click="addRow(1, 1)" style="width: 46px;">1</el-button>
             <el-button type="primary" size="mini" round @click="addRow(1, 2)" style="width: 46px;">2</el-button>
             <el-button type="primary" size="mini" round @click="addRow(1, 3)" style="width: 46px;">3</el-button>
@@ -16,9 +16,12 @@
             <el-button type="primary" size="mini" round @click="addRow(1, 8)" style="width: 46px;">8</el-button>
             <el-button type="primary" size="mini" round @click="addRow(1, 12)" style="width: 46px;">12</el-button>
             <el-button type="primary" size="mini" round @click="addRow(1, 24)" style="width: 46px;">24</el-button>
+            <p>常用列宽：</p>
+            <el-button type="primary" size="mini" round @click="addRow(2, '3-18-3')">3-18-3</el-button>
+            <el-button type="primary" size="mini" round @click="addRow(2, '6-12-6')">6-12-6</el-button>
             <p>自定义列宽（分隔符：非数字即可）</p>
             <el-input v-model="customRow" placeholder="如：6 12 6"></el-input>
-            <el-button type="primary" size="mini" round @click="addRow(2)">添加</el-button>
+            <el-button type="primary" size="mini" round @click="addRow(2, null)">添加</el-button>
             <el-button type="primary" size="mini" round @click="customRow = ''">清空</el-button>
           </div>
         </el-collapse-item>
@@ -80,7 +83,8 @@
             row.children.push(col)
           }
         } else if(type == 2) {
-          const cols = this.customRow.split(/\D/)
+          value = value?value:this.customRow
+          const cols = value.split(/\D/)
           for(let i in cols){
             const colspan = cols[i]
             const col = {

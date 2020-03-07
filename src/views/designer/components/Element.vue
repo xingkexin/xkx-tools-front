@@ -38,8 +38,10 @@
 <style scoped lang="less">
   .container {
     margin: 5px 0;
+    background-color: gray;
   }
   .component {
+    background-color: white;
     border: 1px dashed #000;
     min-height: 50px;
     min-width: 10px
