@@ -27,9 +27,7 @@
     <el-main>
       <el-tabs type="border-card" @tab-click="tabChange">
         <el-tab-pane label="设计">
-          <el-row v-for="(row, index) in rowList" :key="index" class="component">
-            <el-col v-for="(col, index) in row.children" :key="index" :span="col.span" class="component"></el-col>
-          </el-row>
+          <xkx-element v-for="(item, index) in rowList" :path="index" :obj="item" :key="index" @click="clickHandler"></xkx-element>
         </el-tab-pane>
         <el-tab-pane label="代码" name="code">
           <div>
@@ -42,8 +40,11 @@
 </template>
 
 <script>
+  import XkxElement from './components/Element.vue'
   export default {
-    components: {},
+    components: {
+      XkxElement
+    },
     data() {
       return {
         customRow: null,
@@ -83,7 +84,7 @@
           }
         }
         this.rowList.push(row)
-        // console.log(this.rowList)
+        console.log(this.rowList)
       },
       tabChange(tab) {
         if(tab.name == 'code') this.genCode()
@@ -116,6 +117,9 @@
         let html = '<el-col :span="' + ele.span + '">' + this._genChild(ele.children) + '</el-col>'
         // console.log(html)
         return html
+      },
+      clickHandler(path) {
+        console.log('接到path：' + path)
       }
     }
   }
