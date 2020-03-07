@@ -27,7 +27,7 @@
     <el-main>
       <el-tabs type="border-card" @tab-click="tabChange">
         <el-tab-pane label="设计">
-          <xkx-element :path="root" :obj="rootEle" @click="clickHandler"></xkx-element>
+          <xkx-element path="root" :obj="rootEle" @click="clickHandler"></xkx-element>
         </el-tab-pane>
         <el-tab-pane label="代码" name="code">
           <div>
@@ -176,11 +176,6 @@
     }
     .el-tab-pane {
       min-height: 500px;
-    }
-    .component {
-      border: 1px dashed #000;
-      min-height: 50px;
-      min-width: 10px
     }
   }
 </style>
