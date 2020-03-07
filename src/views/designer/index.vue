@@ -4,8 +4,8 @@
       <div style="text-align: center; margin: 5px;">
         <el-button type="primary" @click="genCode">生成代码</el-button>
       </div>
-      <el-collapse>
-        <el-collapse-item title="布局" name="1">
+      <el-collapse :value="['1']">
+        <el-collapse-item title="ElementUI布局" name="1">
           <div>
             <!-- <el-tag>container</el-tag>
             <el-tag>header</el-tag>
@@ -30,13 +30,13 @@
       </el-popover>
     </el-aside>
     <el-main>
-      <el-tabs type="border-card">
+      <el-tabs type="border-card" @tab-click="tabChange">
         <el-tab-pane label="设计">
           <el-row v-for="(row, index) in rowList" :key="index" class="component">
             <el-col v-for="(col, index) in row.children" :key="index" :span="col.span" class="component"></el-col>
           </el-row>
         </el-tab-pane>
-        <el-tab-pane label="代码">
+        <el-tab-pane label="代码" name="code">
           <div>
             {{html}}
           </div>
@@ -77,10 +77,12 @@
         this.rowList.push(row)
         // console.log(this.rowList)
       },
+      tabChange(tab) {
+        if(tab.name == 'code') this.genCode()
+      },
       genCode() {
         const html = this._genChild(this.rowList)
         this.html = html
-        console.log(html)
       },
       _genChild(children) {
         let childrenStr = ''
@@ -113,19 +115,18 @@
 
 <style scoped lang="less">
   .el-aside {
-    padding: 5px;
+    padding: 10px;
     background-color: #F3F3F3;
+    border-right-width: 10px;
+    border-right-style: groove;
 
     .el-collapse {}
 
     .el-collapse-item {
       background-color: #F3F3F3;
 
-      div {
-        margin: 5px 0;
-      }
-
       .el-tag {
+        margin: 5px;
         width: 80px;
         text-align: center;
       }
@@ -135,7 +136,6 @@
   .el-main {
     margin: 0;
     padding: 0;
-    padding-left: 10px;
     min-height: 600px;
     background-color: #F3F3F3;
     .el-tabs {

@@ -26,7 +26,6 @@
         <router-view />
       </el-main>
       <el-footer>
-        <el-divider></el-divider>
         <el-link href="http://www.beian.miit.gov.cn/" target="_blank" :underline="false">冀ICP备20000748号</el-link>
       </el-footer>
     </el-container>
