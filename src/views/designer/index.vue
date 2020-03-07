@@ -27,7 +27,7 @@
     <el-main>
       <el-tabs type="border-card" @tab-click="tabChange">
         <el-tab-pane label="设计">
-          <xkx-element v-for="(item, index) in rowList" :path="'root-' + index" :obj="item" :key="index" @click="clickHandler"></xkx-element>
+          <xkx-element :path="root" :obj="rootEle" @click="clickHandler"></xkx-element>
         </el-tab-pane>
         <el-tab-pane label="代码" name="code">
           <div>
@@ -50,14 +50,21 @@
         customRow: null,
         rowList: [],
         html: null,
-        currEle: null
+        rootEle: {
+          name: 'div',
+          active: true,
+          children: []
+        },
+        currPath: 'root',
+        currEle: this.rootEle
       }
     },
     methods: {
       addRow(type, value) {
-        if(!this.currEle) this.currEle = this.rowList
+        if(!this.currEle) this.currEle = this.rootEle
         const row = {
           name: 'row',
+          active: false,
           children: []
         }
         if(1 == type) {
@@ -67,7 +74,7 @@
             const col = {
               name: 'col',
               span: new Number(colspan),
-              width: null,
+              active: false,
               children: []
             }
             row.children.push(col)
@@ -79,15 +86,15 @@
             const col = {
               name: 'col',
               span: new Number(colspan),
-              width: null,
+              active: false,
               children: []
             }
             row.children.push(col)
           }
         }
-        this.currEle.push(row)
-        console.log(JSON.stringify(this.currEle))
-        console.log(JSON.stringify(this.rowList))
+        this.currEle.children.push(row)
+        // console.log(JSON.stringify(this.currEle))
+        // console.log(JSON.stringify(this.rowList))
       },
       tabChange(tab) {
         if(tab.name == 'code') this.genCode()
@@ -122,15 +129,17 @@
         return html
       },
       clickHandler(path) {
-        console.log('接到path：' + path)
         // 根据path，定位到当前选中的元素
-        this.currEle = this.rowList
+        this.currEle.active = false
+        this.currEle = this.rootEle
         const indexList = path.split('-')
         for(let i=1; i<indexList.length; i++) {
           const index = indexList[i]
-          this.currEle = this.currEle[index].children
+          this.currEle = this.currEle.children[index]
         }
-      }
+        this.currEle.active = true
+        this.currPath = path
+      },
     }
   }
 </script>

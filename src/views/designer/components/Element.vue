@@ -1,11 +1,13 @@
 <template>
-    <el-row class="component" :class="{active: active}" v-if="'row' == obj.name" @click.native="clickHandler(obj.children)">
+    <el-row class="component" :class="{active: obj.active}" v-if="'row' == obj.name" @click.native="clickHandler(obj.children)">
       <xkx-element v-for="(child, index) in obj.children" :path="path + '-' + index" :obj="child" :key="index" @click="clickEvent"></xkx-element>
     </el-row>
-    <el-col class="component" :class="{active: active}" :span="obj.span" v-else-if="'col' == obj.name" @click.native="clickHandler(obj.children)">
+    <el-col class="component" :class="{active: obj.active}" :span="obj.span" v-else-if="'col' == obj.name" @click.native="clickHandler(obj.children)">
       <xkx-element v-for="(child, index) in obj.children" :path="path + '-' + index" :obj="child" :key="index" @click="clickEvent"></xkx-element>
     </el-col>
-    <div class="component" :class="{active: active}" v-else @click="clickHandler(obj.children)"></div>
+    <div class="component" :class="{active: obj.active}" v-else @click="clickHandler(obj.children)">
+      <xkx-element v-for="(child, index) in obj.children" :path="path + '-' + index" :obj="child" :key="index" @click="clickEvent"></xkx-element>
+    </div>
 </template>
 
 <script>
