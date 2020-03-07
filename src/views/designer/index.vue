@@ -7,11 +7,11 @@
       <el-collapse>
         <el-collapse-item title="布局" name="1">
           <div>
-            <el-tag>container</el-tag>
+            <!-- <el-tag>container</el-tag>
             <el-tag>header</el-tag>
             <el-tag>aside</el-tag>
             <el-tag>main</el-tag>
-            <el-tag>footer</el-tag>
+            <el-tag>footer</el-tag> -->
             <el-tag v-popover:rowPopover>row</el-tag>
           </div>
         </el-collapse-item>
@@ -30,11 +30,18 @@
       </el-popover>
     </el-aside>
     <el-main>
-      <div>
-        <el-row v-for="(row, index) in rowList" :key="index" class="component">
-          <el-col v-for="(col, index) in row.children" :key="index" :span="col.span" class="component"></el-col>
-        </el-row>
-      </div>
+      <el-tabs type="border-card">
+        <el-tab-pane label="设计">
+          <el-row v-for="(row, index) in rowList" :key="index" class="component">
+            <el-col v-for="(col, index) in row.children" :key="index" :span="col.span" class="component"></el-col>
+          </el-row>
+        </el-tab-pane>
+        <el-tab-pane label="代码">
+          <div>
+            {{html}}
+          </div>
+        </el-tab-pane>
+      </el-tabs>
     </el-main>
   </el-container>
 </template>
@@ -44,7 +51,8 @@
     components: {},
     data() {
       return {
-        rowList: []
+        rowList: [],
+        html: null
       }
     },
     methods: {
@@ -71,16 +79,7 @@
       },
       genCode() {
         const html = this._genChild(this.rowList)
-
-        // let rowshtml = ''
-        // for(let row in this.rowList) {
-        //   let colsHtml = ''
-        //   for(let col in row) {
-        //     colsHtml += '<el-col :span="' + col.span + '"></el-col>'
-        //   }
-        //   let rowHtml = '<el-row>' + colsHtml + '</el-row>'
-        //   rowshtml += rowHtml
-        // }
+        this.html = html
         console.log(html)
       },
       _genChild(children) {
@@ -139,7 +138,12 @@
     padding-left: 10px;
     min-height: 600px;
     background-color: #F3F3F3;
-
+    .el-tabs {
+      margin: 10px;
+    }
+    .el-tab-pane {
+      min-height: 500px;
+    }
     .component {
       border: 1px dashed #000;
       min-height: 50px;
