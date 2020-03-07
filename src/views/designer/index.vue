@@ -7,27 +7,22 @@
       <el-collapse :value="['1']">
         <el-collapse-item title="ElementUI布局" name="1">
           <div>
-            <!-- <el-tag>container</el-tag>
-            <el-tag>header</el-tag>
-            <el-tag>aside</el-tag>
-            <el-tag>main</el-tag>
-            <el-tag>footer</el-tag> -->
-            <el-tag v-popover:rowPopover>row</el-tag>
+            <p>快速生成等宽列数：</p>
+            <el-button type="primary" size="mini" round @click="addRow(1, 1)" style="width: 46px;">1</el-button>
+            <el-button type="primary" size="mini" round @click="addRow(1, 2)" style="width: 46px;">2</el-button>
+            <el-button type="primary" size="mini" round @click="addRow(1, 3)" style="width: 46px;">3</el-button>
+            <el-button type="primary" size="mini" round @click="addRow(1, 4)" style="width: 46px;">4</el-button>
+            <el-button type="primary" size="mini" round @click="addRow(1, 6)" style="width: 46px;">6</el-button>
+            <el-button type="primary" size="mini" round @click="addRow(1, 8)" style="width: 46px;">8</el-button>
+            <el-button type="primary" size="mini" round @click="addRow(1, 12)" style="width: 46px;">12</el-button>
+            <el-button type="primary" size="mini" round @click="addRow(1, 24)" style="width: 46px;">24</el-button>
+            <p>自定义列宽（分隔符：非数字即可）</p>
+            <el-input v-model="customRow" placeholder="如：6 12 6"></el-input>
+            <el-button type="primary" size="mini" round @click="addRow(2)">添加</el-button>
+            <el-button type="primary" size="mini" round @click="customRow = ''">清空</el-button>
           </div>
         </el-collapse-item>
       </el-collapse>
-      <el-popover placement="top" width="160" ref="rowPopover">
-        <p>
-          <el-button type="primary" size="mini" round @click="add('col', 1, 1)">1</el-button>
-          <el-button type="primary" size="mini" round @click="add('col', 1, 2)">2</el-button>
-          <el-button type="primary" size="mini" round @click="add('col', 1, 3)">3</el-button>
-          <el-button type="primary" size="mini" round @click="add('col', 1, 4)">4</el-button>
-          <el-button type="primary" size="mini" round @click="add('col', 1, 6)">6</el-button>
-          <el-button type="primary" size="mini" round @click="add('col', 1, 8)">8</el-button>
-          <el-button type="primary" size="mini" round @click="add('col', 1, 12)">12</el-button>
-          <el-button type="primary" size="mini" round @click="add('col', 1, 24)">24</el-button>
-        </p>
-      </el-popover>
     </el-aside>
     <el-main>
       <el-tabs type="border-card" @tab-click="tabChange">
@@ -51,12 +46,13 @@
     components: {},
     data() {
       return {
+        customRow: null,
         rowList: [],
         html: null
       }
     },
     methods: {
-      add(eleName, type, value) {
+      addRow(type, value) {
         const row = {
           name: 'row',
           children: []
@@ -66,8 +62,20 @@
           const colspan = 24/value
           for(let i=0; i<value; i++){
             const col = {
-              name: eleName,
-              span: colspan,
+              name: 'col',
+              span: new Number(colspan),
+              width: null,
+              children: null
+            }
+            row.children.push(col)
+          }
+        } else if(type == 2) {
+          const cols = this.customRow.split(/\D/)
+          for(let i in cols){
+            const colspan = cols[i]
+            const col = {
+              name: 'col',
+              span: new Number(colspan),
               width: null,
               children: null
             }
@@ -124,7 +132,9 @@
 
     .el-collapse-item {
       background-color: #F3F3F3;
-
+      .el-button {
+        margin: 3px;
+      }
       .el-tag {
         margin: 5px;
         width: 80px;
