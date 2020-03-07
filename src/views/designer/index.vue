@@ -51,7 +51,6 @@
     data() {
       return {
         customRow: null,
-        rowList: [],
         html: null,
         rootEle: {
           name: 'div',
@@ -97,14 +96,12 @@
           }
         }
         this.currEle.children.push(row)
-        // console.log(JSON.stringify(this.currEle))
-        // console.log(JSON.stringify(this.rowList))
       },
       tabChange(tab) {
         if(tab.name == 'code') this.genCode()
       },
       genCode() {
-        const html = this._genChild(this.rowList)
+        const html = this._genChild(this.rootEle.children)
         this.html = html
       },
       _genChild(children) {
