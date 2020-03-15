@@ -19,6 +19,7 @@
             <el-button type="primary" size="mini" round @click="addRow(1, 24)" style="width: 46px;">24</el-button>
             <p>常用列宽：</p>
             <el-button type="primary" size="mini" round @click="addRow(2, '3-18-3')">3-18-3</el-button>
+            <el-button type="primary" size="mini" round @click="addRow(2, '3:18')">3:18</el-button>
             <el-button type="primary" size="mini" round @click="addRow(2, '6-12-6')">6-12-6</el-button>
             <p>自定义列宽（分隔符：非数字即可）</p>
             <el-input v-model="customRow" placeholder="如：6 12 6"></el-input>
@@ -94,11 +95,20 @@
           }
         } else if(type == 2) {
           value = value?value:this.customRow
-          const cols = value.split(/\D/)
+          const cols = value.split(/[-\s]/)
           for(let i in cols){
-            const colspan = cols[i]
+            const offsetAndColspan = cols[i].split(':')
+            let offset = 0
+            let colspan = 1
+            if(offsetAndColspan.length == 1){
+              colspan = offsetAndColspan[0]
+            } else {
+              offset = offsetAndColspan[0]
+              colspan = offsetAndColspan[1]
+            }
             const col = {
               name: 'col',
+              offset: new Number(offset),
               span: new Number(colspan),
               active: false,
               children: []
@@ -141,9 +151,16 @@
       },
       _genCol(ele, level) {
         const blankSpace = this._genBlank(level)
-        let html = '\n'
-        html += blankSpace + '<el-col :span="' + ele.span + '">'
+        let html = ''
+        // 开始标签
+        html += '\n' + blankSpace + '<el-col'
+        // 开始标签的属性
+        html += ' :span="' + ele.span + '"'
+        if(ele.offset > 0) html += ' :offset="' + ele.offset + '"'
+        html += '>'
+        // 子标签
         html += this._genChild(ele.children, level+1)
+        // 结束标签
         html += '\n' + blankSpace + '</el-col>'
         // let html = '<el-col :span="' + ele.span + '">' + this._genChild(ele.children, level+1) + '</el-col>'
         // console.log(html)

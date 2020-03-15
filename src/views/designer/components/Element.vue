@@ -2,7 +2,7 @@
     <el-row class="layout-container" :class="{active: obj.active}" v-if="'row' == obj.name">
       <xkx-element v-for="(child, index) in obj.children" :path="path + '-' + index" :obj="child" :key="index" @click="clickEvent"></xkx-element>
     </el-row>
-    <el-col class="content-container select" :class="{active: obj.active}" :span="obj.span" v-else-if="'col' == obj.name" @click.self.native="clickHandler(obj.children)">
+    <el-col class="content-container select" :class="{active: obj.active}" :span="obj.span" :offset="obj.offset" v-else-if="'col' == obj.name" @click.self.native="clickHandler(obj.children)">
       <xkx-element v-for="(child, index) in obj.children" :path="path + '-' + index" :obj="child" :key="index" @click="clickEvent"></xkx-element>
     </el-col>
     <div class="content-container select" :class="{active: obj.active}" v-else @click.self="clickHandler(obj.children)">
@@ -37,19 +37,19 @@
 
 <style scoped lang="less">
   .layout-container {
-    margin: 0 0 10px;
-    // background-color: gray;
+    margin-bottom: 10px;
+    background-color: gray;
     border: 1px dotted #000;
   }
   .content-container {
-    margin: 5px 0;
+    margin-top: 5px;
     background-color: white;
     border: 1px solid #000;
     min-height: 50px;
     min-width: 10px
   }
   .select {
-    padding: 5px 0;
+    // padding: 5px 0;
   }
   .active {
     border-color: red;
