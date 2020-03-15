@@ -29,14 +29,14 @@
       </el-collapse>
     </el-aside>
     <el-main>
+      <span>说明：虚线为布局容器；实线为内容容器。</span>
       <el-tabs type="border-card" @tab-click="tabChange">
         <el-tab-pane label="设计">
           <xkx-element path="root" :obj="rootEle" @click="clickHandler"></xkx-element>
         </el-tab-pane>
         <el-tab-pane label="代码" name="code">
-          <div>
-            {{html}}
-          </div>
+          <el-input type="textarea" autosize :value="html" readonly>
+          </el-input>
         </el-tab-pane>
       </el-tabs>
     </el-main>
@@ -112,33 +112,49 @@
         if(tab.name == 'code') this.genCode()
       },
       genCode() {
-        const html = this._genChild(this.rootEle.children)
+        const html = this._genChild(this.rootEle.children, 1)
         this.html = html
       },
-      _genChild(children) {
+      _genChild(children, level) {
         let childrenStr = ''
         if(null == children) return childrenStr
         for(let i in children) {
           let childStr
           const ele = children[i]
           if(ele.name == 'row') {
-            childStr = this._genRow(ele)
+            childStr = this._genRow(ele, level)
           }else if(ele.name == 'col') {
-            childStr = this._genCol(ele)
+            childStr = this._genCol(ele, level)
           }
           childrenStr += childStr
         }
         return childrenStr
       },
-      _genRow(ele) {
-        let html = '<el-row>' + this._genChild(ele.children) + '</el-row>'
+      _genRow(ele, level) {
+        const blankSpace = this._genBlank(level)
+        let html = '\n'
+        html += blankSpace + '<el-row>'
+        html += this._genChild(ele.children, level+1)
+        html += '\n' + blankSpace + '</el-row>'
         // console.log(html)
         return html
       },
-      _genCol(ele) {
-        let html = '<el-col :span="' + ele.span + '">' + this._genChild(ele.children) + '</el-col>'
+      _genCol(ele, level) {
+        const blankSpace = this._genBlank(level)
+        let html = '\n'
+        html += blankSpace + '<el-col :span="' + ele.span + '">'
+        html += this._genChild(ele.children, level+1)
+        html += '\n' + blankSpace + '</el-col>'
+        // let html = '<el-col :span="' + ele.span + '">' + this._genChild(ele.children, level+1) + '</el-col>'
         // console.log(html)
         return html
+      },
+      _genBlank(num) {
+        let result = ''
+        for(let i=1; i<num; i++) {
+          result += '  '
+        }
+        return result
       },
       clickHandler(path) {
         // 根据path，定位到当前选中的元素

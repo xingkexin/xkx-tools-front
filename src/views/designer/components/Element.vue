@@ -1,11 +1,11 @@
 <template>
-    <el-row class="container" :class="{active: obj.active}" v-if="'row' == obj.name">
+    <el-row class="layout-container" :class="{active: obj.active}" v-if="'row' == obj.name">
       <xkx-element v-for="(child, index) in obj.children" :path="path + '-' + index" :obj="child" :key="index" @click="clickEvent"></xkx-element>
     </el-row>
-    <el-col class="component select" :class="{active: obj.active}" :span="obj.span" v-else-if="'col' == obj.name" @click.self.native="clickHandler(obj.children)">
+    <el-col class="content-container select" :class="{active: obj.active}" :span="obj.span" v-else-if="'col' == obj.name" @click.self.native="clickHandler(obj.children)">
       <xkx-element v-for="(child, index) in obj.children" :path="path + '-' + index" :obj="child" :key="index" @click="clickEvent"></xkx-element>
     </el-col>
-    <div class="component select" :class="{active: obj.active}" v-else @click.self="clickHandler(obj.children)">
+    <div class="content-container select" :class="{active: obj.active}" v-else @click.self="clickHandler(obj.children)">
       <xkx-element v-for="(child, index) in obj.children" :path="path + '-' + index" :obj="child" :key="index" @click="clickEvent"></xkx-element>
     </div>
 </template>
@@ -36,18 +36,20 @@
 </script>
 
 <style scoped lang="less">
-  .container {
-    margin: 5px 0;
-    background-color: gray;
+  .layout-container {
+    margin: 0 0 10px;
+    // background-color: gray;
+    border: 1px dotted #000;
   }
-  .component {
+  .content-container {
+    margin: 5px 0;
     background-color: white;
-    border: 1px dashed #000;
+    border: 1px solid #000;
     min-height: 50px;
     min-width: 10px
   }
   .select {
-    padding: 5px;
+    padding: 5px 0;
   }
   .active {
     border-color: red;
