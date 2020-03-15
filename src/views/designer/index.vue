@@ -33,6 +33,9 @@
       <span>说明：虚线为布局容器；实线为内容容器。</span>
       <el-tabs type="border-card" @tab-click="tabChange">
         <el-tab-pane label="设计">
+          <div>
+            <el-button type="primary" icon="el-icon-delete" @click="clearChildren">清空内部元素</el-button>
+          </div>
           <xkx-element path="root" :obj="rootEle" @click="clickHandler"></xkx-element>
         </el-tab-pane>
         <el-tab-pane label="代码" name="code">
@@ -120,6 +123,9 @@
       },
       tabChange(tab) {
         if(tab.name == 'code') this.genCode()
+      },
+      clearChildren() {
+        this.currEle.children = []
       },
       genCode() {
         const html = this._genChild(this.rootEle.children, 1)
