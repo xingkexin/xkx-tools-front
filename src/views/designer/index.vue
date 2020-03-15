@@ -32,7 +32,10 @@
       <span>说明：虚线为布局容器；实线为内容容器。</span>
       <el-tabs type="border-card" @tab-click="tabChange">
         <el-tab-pane label="设计">
-          <div>
+          <div v-if="'layout' == currType">
+            <el-button type="primary" icon="el-icon-delete" @click="deleteCurr">删除当前元素</el-button>
+          </div>
+          <div v-else-if="'content' == currType">
             <el-button type="primary" icon="el-icon-delete" @click="clearChildren">清空内部元素</el-button>
           </div>
           <xkx-element path="root" :obj="rootEle" @click="clickHandler"></xkx-element>
@@ -129,6 +132,14 @@
       },
       tabChange(tab) {
         if(tab.name == 'code') this.genCode()
+      },
+      deleteCurr() {
+        this.currEle.active = false
+        this.parentEle.children.splice(this.currEleIndex, 1)
+        this.currType = 'content'
+        this.currEle = this.rootEle
+        this.currEleIndex = 0
+        this.currEle.active = true
       },
       clearChildren() {
         this.currEle.children = []
