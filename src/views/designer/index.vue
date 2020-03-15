@@ -7,6 +7,9 @@
       <el-collapse :value="['1']">
         <el-collapse-item title="ElementUI布局" name="1">
           <div>
+            <p>布局容器：</p>
+            <el-button type="primary" size="mini" round @click="addContainer('1')">完整container</el-button>
+            <el-button type="primary" size="mini" round @click="addContainer('2')">左右container</el-button>
             <p>常用等宽列数：</p>
             <el-button type="primary" size="mini" round @click="addRow(1, 1)" style="width: 46px;">1</el-button>
             <el-button type="primary" size="mini" round @click="addRow(1, 2)" style="width: 46px;">2</el-button>
@@ -82,6 +85,52 @@
         this.currEle = this.rootEle
         this.html = null
       },
+      addContainer(type) {
+        if(!this.currEle) this.currEle = this.rootEle
+        const container = {
+          name: 'container',
+          active: false,
+          children: []
+        }
+        const header = {
+          name: 'header',
+          active: false,
+          children: []
+        }
+        const aside = {
+          name: 'aside',
+          active: false,
+          children: []
+        }
+        const main = {
+          name: 'main',
+          active: false,
+          children: []
+        }
+        const footer = {
+          name: 'footer',
+          active: false,
+          children: []
+        }
+        if(type == '1') {
+          // 添加完整容器
+          container.children.push(header)
+          // container.children.push(aside)
+          container.children.push(main)
+          container.children.push(footer)
+        } else if(type == '2') {
+          // 添加左右布局容器
+          container.children.push(aside)
+          container.children.push(main)
+        } else {
+          return
+        }
+        if(this.currType == 'content') {
+          this.currEle.children.push(container)
+        } else if(this.currType == 'layout') {
+          this.parentEle.children.splice(this.currEleIndex, 0, container)
+        }
+      },
       addRow(type, value) {
         if(!this.currEle) this.currEle = this.rootEle
         const row = {
@@ -154,22 +203,21 @@
         for(let i in children) {
           let childStr
           const ele = children[i]
-          if(ele.name == 'row') {
-            childStr = this._genRow(ele, level)
-          }else if(ele.name == 'col') {
+          if(ele.name == 'col') {
             childStr = this._genCol(ele, level)
+          } else {
+            childStr = this._genEle(ele, level)
           }
           childrenStr += childStr
         }
         return childrenStr
       },
-      _genRow(ele, level) {
+      _genEle(ele, level) {
         const blankSpace = this._genBlank(level)
         let html = '\n'
-        html += blankSpace + '<el-row>'
+        html += blankSpace + '<el-' + ele.name + '>'
         html += this._genChild(ele.children, level+1)
-        html += '\n' + blankSpace + '</el-row>'
-        // console.log(html)
+        html += '\n' + blankSpace + '</el-' + ele.name + '>'
         return html
       },
       _genCol(ele, level) {

@@ -1,5 +1,20 @@
 <template>
-    <el-row class="layout-container" :class="{active: obj.active}" v-if="'row' == obj.name" @click.self.native="clickHandler('layout')">
+    <el-container class="layout-container" :class="{active: obj.active}" v-if="'container' == obj.name" @click.self.native="clickHandler('layout')">
+      <xkx-element v-for="(child, index) in obj.children" :path="path + '-' + index" :obj="child" :key="index" @click="clickEvent"></xkx-element>
+    </el-container>
+    <el-header class="content-container" :class="{active: obj.active}" v-else-if="'header' == obj.name" @click.self.native="clickHandler('content')">
+      <xkx-element v-for="(child, index) in obj.children" :path="path + '-' + index" :obj="child" :key="index" @click="clickEvent"></xkx-element>
+    </el-header>
+    <el-aside class="content-container" :class="{active: obj.active}" v-else-if="'aside' == obj.name" @click.self.native="clickHandler('content')" width="30px">
+      <xkx-element v-for="(child, index) in obj.children" :path="path + '-' + index" :obj="child" :key="index" @click="clickEvent"></xkx-element>
+    </el-aside>
+    <el-main class="content-container" :class="{active: obj.active}" v-else-if="'main' == obj.name" @click.self.native="clickHandler('content')">
+      <xkx-element v-for="(child, index) in obj.children" :path="path + '-' + index" :obj="child" :key="index" @click="clickEvent"></xkx-element>
+    </el-main>
+    <el-footer class="content-container" :class="{active: obj.active}" v-else-if="'footer' == obj.name" @click.self.native="clickHandler('content')">
+      <xkx-element v-for="(child, index) in obj.children" :path="path + '-' + index" :obj="child" :key="index" @click="clickEvent"></xkx-element>
+    </el-footer>
+    <el-row class="layout-container" :class="{active: obj.active}" v-else-if="'row' == obj.name" @click.self.native="clickHandler('layout')">
       <xkx-element v-for="(child, index) in obj.children" :path="path + '-' + index" :obj="child" :key="index" @click="clickEvent"></xkx-element>
     </el-row>
     <el-col class="content-container" :class="{active: obj.active}" :span="obj.span" :offset="obj.offset" v-else-if="'col' == obj.name" @click.self.native="clickHandler('content')">
