@@ -3,7 +3,6 @@
     <el-aside width="260px">
       <div style="text-align: center; margin: 5px;">
         <el-button type="primary" @click="reset">重置</el-button>
-        <el-button type="primary" @click="genCode">生成代码</el-button>
       </div>
       <el-collapse :value="['1']">
         <el-collapse-item title="ElementUI布局" name="1">
@@ -62,8 +61,11 @@
           active: true,
           children: []
         },
-        currPath: 'root',
-        currEle: this.rootEle
+        currType: 'content',
+        // currPath: 'root',
+        currEle: this.rootEle,
+        currEleIndex: 0,
+        parentEle: null
       }
     },
     methods: {
@@ -73,7 +75,7 @@
           active: true,
           children: []
         }
-        this.currPath = 'root',
+        // this.currPath = 'root',
         this.currEle = this.rootEle
         this.html = null
       },
@@ -119,7 +121,11 @@
             row.children.push(col)
           }
         }
-        this.currEle.children.push(row)
+        if(this.currType == 'content') {
+          this.currEle.children.push(row)
+        } else if(this.currType == 'layout') {
+          this.parentEle.children.splice(this.currEleIndex, 0, row)
+        }
       },
       tabChange(tab) {
         if(tab.name == 'code') this.genCode()
@@ -179,17 +185,21 @@
         }
         return result
       },
-      clickHandler(path) {
+      clickHandler(path, type) {
         // 根据path，定位到当前选中的元素
+        console.log('type:' + type)
         this.currEle.active = false
         this.currEle = this.rootEle
         const indexList = path.split('-')
         for(let i=1; i<indexList.length; i++) {
+          this.parentEle = this.currEle
           const index = indexList[i]
           this.currEle = this.currEle.children[index]
+          this.currEleIndex = index
         }
+        this.currType = type
         this.currEle.active = true
-        this.currPath = path
+        // this.currPath = path
       },
     }
   }

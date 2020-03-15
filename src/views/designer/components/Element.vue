@@ -1,11 +1,11 @@
 <template>
-    <el-row class="layout-container" :class="{active: obj.active}" v-if="'row' == obj.name">
+    <el-row class="layout-container" :class="{active: obj.active}" v-if="'row' == obj.name" @click.self.native="clickHandler('layout')">
       <xkx-element v-for="(child, index) in obj.children" :path="path + '-' + index" :obj="child" :key="index" @click="clickEvent"></xkx-element>
     </el-row>
-    <el-col class="content-container select" :class="{active: obj.active}" :span="obj.span" :offset="obj.offset" v-else-if="'col' == obj.name" @click.self.native="clickHandler(obj.children)">
+    <el-col class="content-container" :class="{active: obj.active}" :span="obj.span" :offset="obj.offset" v-else-if="'col' == obj.name" @click.self.native="clickHandler('content')">
       <xkx-element v-for="(child, index) in obj.children" :path="path + '-' + index" :obj="child" :key="index" @click="clickEvent"></xkx-element>
     </el-col>
-    <div class="content-container select" :class="{active: obj.active}" v-else @click.self="clickHandler(obj.children)">
+    <div class="content-container" :class="{active: obj.active}" v-else @click.self="clickHandler('content')">
       <xkx-element v-for="(child, index) in obj.children" :path="path + '-' + index" :obj="child" :key="index" @click="clickEvent"></xkx-element>
     </div>
 </template>
@@ -18,18 +18,16 @@
     },
     data() {
       return {
-        active: false
       }
     },
     methods: {
-      clickHandler(list) {
+      clickHandler(type) {
         // if(list.length > 0) return false
         console.log(this.path)
-        this.active = !this.active
-        this.$emit('click', this.path)
+        this.$emit('click', this.path, type)
       },
-      clickEvent(path) {
-        this.$emit('click', path)
+      clickEvent(path, type) {
+        this.$emit('click', path, type)
       }
     }
   }
@@ -48,10 +46,8 @@
     min-height: 50px;
     min-width: 10px
   }
-  .select {
-    // padding: 5px 0;
-  }
   .active {
     border-color: red;
+    border-width: 2px;
   }
 </style>
