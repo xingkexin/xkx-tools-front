@@ -244,9 +244,11 @@
         }
         return result
       },
-      clickHandler(path, type) {
+      clickHandler(type, path) {
         // 根据path，定位到当前选中的元素
-        console.log('type:' + type)
+        console.log(this.currEle)
+        console.log(JSON.stringify(this.currEle))
+        console.log(path)
         this.currEle.active = false
         this.currEle = this.rootEle
         const indexList = path.split('-')
@@ -256,6 +258,7 @@
           this.currEle = this.currEle.children[index]
           this.currEleIndex = index
         }
+        console.log(JSON.stringify(this.currEle))
         this.currType = type
         this.currEle.active = true
         // this.currPath = path
