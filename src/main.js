@@ -1,16 +1,17 @@
 // 以下为百度统计的代码
 var _hmt = _hmt || [];
-window._hmt = _hmt; // 修改为window 全局变量
+// 修改为window 全局变量
+window._hmt = _hmt;
 if(process.env.NODE_ENV != 'development') {
   (function() {
     var hm = document.createElement("script");
-    hm.src = "https://hm.baidu.com/hm.js?5e32c08d95854b2989a0ac08477b3494";
-    var s = document.getElementsByTagName("script")[0]; 
+    hm.src = "https://hm.baidu.com/hm.js?a0d2cad5884a67f7d3ff97e4c6d4cfa6";
+    var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(hm, s);
   })();
   _hmt.push(['_requirePlugin', 'UrlChangeTracker', {
     shouldTrackUrlChange: function (newPath, oldPath) {
-    return newPath && oldPath;
+      return newPath && oldPath;
     }}
   ]);
 }

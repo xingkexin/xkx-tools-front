@@ -85,6 +85,7 @@
           <el-tag><el-link :underline="false" target="_blank" href="https://element.eleme.cn/#/zh-CN/component/installation">饿了么ElementUI</el-link></el-tag>
           <el-tag><el-link :underline="false" target="_blank" href="http://mint-ui.github.io/#!/zh-cn">饿了么Mint UI</el-link></el-tag>
           <el-tag><el-link :underline="false" target="_blank" href="https://nutui.jd.com/">京东Nut UI</el-link></el-tag>
+          <el-tag><el-link :underline="false" target="_blank" href="https://dafrok.github.io/vue-baidu-map/#/zh/index">百度Map</el-link></el-tag>
         </h3></el-col>
       </el-row>
       <el-divider></el-divider>
