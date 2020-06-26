@@ -11,6 +11,11 @@
               <el-menu-item index="/">首页</el-menu-item>
               <el-menu-item index="/tools">小工具</el-menu-item>
               <el-menu-item index="/designer">代码设计器</el-menu-item>
+              <el-menu-item index="/doc.html">
+                <a href="/doc.html" target="_blank">
+                  接口文档
+                </a>
+              </el-menu-item>
             </el-menu>
             <el-menu default-active="0" mode="horizontal" class="hidden-sm-and-up" style="float: right;" router>
               <el-submenu index="0">

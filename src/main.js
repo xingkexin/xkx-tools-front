@@ -28,6 +28,8 @@ import 'element-ui/lib/theme-chalk/index.css'
 import 'element-ui/lib/theme-chalk/display.css'
 import 'font-awesome/css/font-awesome.min.css'
 
+process.env.NODE_ENV == 'development' && require('../mock/website.js')
+
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.use(VueAxios, axios)
