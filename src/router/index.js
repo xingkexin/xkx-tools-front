@@ -13,6 +13,7 @@ const Base64 = r => require.ensure([], () => r(require('@/views/tools/Base64')),
 const URL = r => require.ensure([], () => r(require('@/views/tools/URL')), 'URL')
 const MD5 = r => require.ensure([], () => r(require('@/views/tools/MD5')), 'MD5')
 const SHA = r => require.ensure([], () => r(require('@/views/tools/SHA')), 'SHA')
+const UUID = r => require.ensure([], () => r(require('@/views/tools/UUID')), 'UUID')
 
 Vue.use(Router)
 
@@ -38,6 +39,9 @@ export default new Router({
     }, {
       path: 'sha',
       component: SHA
+    }, {
+      path: 'uuid',
+      component: UUID
     }]
   }, {
     path: '/designer',

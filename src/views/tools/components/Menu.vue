@@ -17,6 +17,13 @@
         <el-menu-item index="./md5">MD5</el-menu-item>
         <el-menu-item index="./sha">SHA</el-menu-item>
       </el-submenu>
+      <el-submenu index="99">
+        <template slot="title">
+          <i class="el-icon-location"></i>
+          <span slot="title">其他小工具</span>
+        </template>
+        <el-menu-item index="./uuid">UUID</el-menu-item>
+      </el-submenu>
     </el-menu>
   </div>
 </template>

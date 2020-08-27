@@ -19,3 +19,7 @@ export function save(data) {
     data: qs.stringify(data),
   })
 }
+
+export function get(data) {return request({url: '/url', method: 'get', params: data})}
+
+export function post(data) {return request({url: '/url', method: 'post', data: qs.stringify(data)})}
