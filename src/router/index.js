@@ -14,6 +14,7 @@ const URL = r => require.ensure([], () => r(require('@/views/tools/URL')), 'URL'
 const MD5 = r => require.ensure([], () => r(require('@/views/tools/MD5')), 'MD5')
 const SHA = r => require.ensure([], () => r(require('@/views/tools/SHA')), 'SHA')
 const UUID = r => require.ensure([], () => r(require('@/views/tools/UUID')), 'UUID')
+const DateTime = r => require.ensure([], () => r(require('@/views/tools/DateTime')), 'DateTime')
 
 Vue.use(Router)
 
@@ -42,6 +43,9 @@ export default new Router({
     }, {
       path: 'uuid',
       component: UUID
+    }, {
+      path: 'dateTime',
+      component: DateTime
     }]
   }, {
     path: '/designer',

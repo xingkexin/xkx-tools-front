@@ -23,6 +23,7 @@
           <span slot="title">其他小工具</span>
         </template>
         <el-menu-item index="./uuid">UUID</el-menu-item>
+        <el-menu-item index="./datetime">日期时间</el-menu-item>
       </el-submenu>
     </el-menu>
   </div>

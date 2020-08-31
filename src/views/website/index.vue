@@ -20,7 +20,7 @@
 </template>
 
 <script>
-  import {getWebsiteList} from '@/api/website.js'
+  import {getWebsiteList} from '@/api/index.js'
   export default {
     data() {
       return {
