@@ -15,6 +15,7 @@ const MD5 = r => require.ensure([], () => r(require('@/views/tools/MD5')), 'MD5'
 const SHA = r => require.ensure([], () => r(require('@/views/tools/SHA')), 'SHA')
 const UUID = r => require.ensure([], () => r(require('@/views/tools/UUID')), 'UUID')
 const DateTime = r => require.ensure([], () => r(require('@/views/tools/DateTime')), 'DateTime')
+const NumberConverter = r => require.ensure([], () => r(require('@/views/tools/NumberConverter')), 'NumberConverter')
 
 Vue.use(Router)
 
@@ -46,6 +47,9 @@ export default new Router({
     }, {
       path: 'dateTime',
       component: DateTime
+    }, {
+      path: 'number',
+      component: NumberConverter
     }]
   }, {
     path: '/designer',
