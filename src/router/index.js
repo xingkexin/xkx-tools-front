@@ -16,6 +16,7 @@ const SHA = r => require.ensure([], () => r(require('@/views/tools/SHA')), 'SHA'
 const UUID = r => require.ensure([], () => r(require('@/views/tools/UUID')), 'UUID')
 const DateTime = r => require.ensure([], () => r(require('@/views/tools/DateTime')), 'DateTime')
 const NumberConverter = r => require.ensure([], () => r(require('@/views/tools/NumberConverter')), 'NumberConverter')
+const StringConverter = r => require.ensure([], () => r(require('@/views/tools/StringConverter')), 'StringConverter')
 
 Vue.use(Router)
 
@@ -50,6 +51,9 @@ export default new Router({
     }, {
       path: 'number',
       component: NumberConverter
+    }, {
+      path: 'string',
+      component: StringConverter
     }]
   }, {
     path: '/designer',

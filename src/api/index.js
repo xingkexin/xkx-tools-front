@@ -9,3 +9,5 @@ export function getNumber(data) {return request({url: '/converter/convertNumber'
 
 // 获取网站列表
 export function getWebsiteList() {return request({url: '/website/list', method: 'get'})}
+
+export function encodeToUnicode(data) {return request({url: '/converter/encodeToUnicode', method: 'get', params: data})}

@@ -13,4 +13,7 @@ Mock.mock(new RegExp('/website/list??'), 'get', R)
 R = {"code":"200","msg":"成功","data":{"num2":"1111111111111111","num8":"177777","num10":"65535","num16":"ffff"}}
 Mock.mock(new RegExp('/converter/convertNumber($|\\?)'), 'get', R)
 
+R = {"code":"200","msg":"成功","data":{"unicode":"U+31","utf16":"0031","utf8":"31"}}
+Mock.mock(new RegExp('/converter/encodeToUnicode($|\\?)'), 'get', R)
+
 export default Mock;
